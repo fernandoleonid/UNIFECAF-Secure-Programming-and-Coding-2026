@@ -17,5 +17,5 @@ def criar_cookie(resposta, token):
 
 
 if verificar_acesso("admin"):
-    sessao = {}a
+    sessao = {}
     criar_cookie(sessao, "abc123")

@@ -1,5 +1,4 @@
 import logging
-import subprocess
 
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
@@ -54,7 +53,6 @@ def login(usuario, senha):
 
 
 # Vulnerabilidade 6 — Fail Open
-# Bandit não detecta — lógica de negócio
 def verificar_permissao(usuario, recurso):
     try:
         if recurso not in ["relatorio", "dashboard"]:

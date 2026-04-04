@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo XSS - Cadastro de Produtos</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        table { width: 100%; border-collapse: collapse; margin-top: 30px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background: #f4f4f4; }
+        .alert { background: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🛒 Cadastro de Produtos</h1>
+    
+    <div class="alert">
+        ⚠️ <strong>Atenção:</strong> Este formulário é vulnerável a XSS. 
+        Tente digitar no campo "Nome do Produto": 
+        <code>&lt;button onclick="alert('XSS!')"&gt;Clique&lt;/button&gt;</code>
+    </div>
+
+    <div class="form-group">
+        <label for="produto">Nome do Produto:</label>
+        <input type="text" id="produto" placeholder="Ex: Notebook Dell">
+    </div>
+
+    <div class="form-group">
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" placeholder="Ex: R$ 3.500,00">
+    </div>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+        <tbody id="tabela-produtos">
+            <!-- Produtos serão inseridos aqui -->
+        </tbody>
+    </table>
+
+    <script>
+        function cadastrar() {
+            const produto = document.getElementById('produto').value;
+            const preco = document.getElementById('preco').value;
+
+            if (produto === '' || preco === '') {
+                alert('Preencha todos os campos!');
+                return;
+            }
+
+            const tabela = document.getElementById('tabela-produtos');
+            const novaLinha = tabela.insertRow();
+
+            // ⚠️ VULNERABILIDADE: Usando innerHTML com input do usuário sem sanitização
+            novaLinha.innerHTML = `
+                <td>${produto}</td>
+                <td>${preco}</td>
+            `;
+
+            // Limpa os campos
+            document.getElementById('produto').value = '';
+            document.getElementById('preco').value = '';
+        }
+    </script>
+</body>
+</html>
