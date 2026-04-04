@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Programming and Coding | SDL, SSDLC e DevSecOps</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>🔒 Secure Programming and Coding</h1>
+            <p class="subtitle">Disciplina: Secure Programming and Coding | Professor: Fernando Leonid | Faculdade: UniFECAF</p>
+            <div class="nav-tabs">
+                <button class="nav-tab active" onclick="showSection('overview')">📚 Visão Geral</button>
+                <button class="nav-tab" onclick="showSection('sdl')">🛡️ SDL</button>
+                <button class="nav-tab" onclick="showSection('ssdlc')">⚙️ SSDLC</button>
+                <button class="nav-tab" onclick="showSection('devsecops')">🚀 DevSecOps</button>
+                <button class="nav-tab" onclick="showSection('comparacao')">📊 Comparação</button>
+                <button class="nav-tab" onclick="showSection('quiz')">✅ Quiz</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- OVERVIEW -->
+        <section id="overview" class="content-section active">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">📚</span>
+                    O que é Segurança no Desenvolvimento de Software?
+                </div>
+                <div class="card-content">
+                    <p>Esta página tem <strong>objetivo educacional</strong>, servindo como material de apoio para a disciplina de Secure Programming and Coding.</p>
+                    <br>
+                    <p>A segurança no desenvolvimento de software é uma abordagem integrada que busca identificar e mitigar vulnerabilidades desde as fases iniciais do ciclo de vida de desenvolvimento. Existem três metodologias principais que complementam essa visão:</p>
+                </div>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-title">🛡️ SDL</div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Foco:</div>
+                        <div class="comparison-value">Processo abrangente e estruturado</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Origem:</div>
+                        <div class="comparison-value">Microsoft</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Aplicação:</div>
+                        <div class="comparison-value">Em todo o ciclo de vida</div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-card-title">⚙️ SSDLC</div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Foco:</div>
+                        <div class="comparison-value">Ciclo de vida seguro</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Origem:</div>
+                        <div class="comparison-value">Conceito genérico</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Aplicação:</div>
+                        <div class="comparison-value">Integrado às práticas SDLC</div>
+                    </div>
+                </div>
+
+                <div class="comparison-card">
+                    <div class="comparison-card-title">🚀 DevSecOps</div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Foco:</div>
+                        <div class="comparison-value">Automação e integração contínua</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Origem:</div>
+                        <div class="comparison-value">Evolução DevOps</div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">Aplicação:</div>
+                        <div class="comparison-value">Em pipelines CI/CD</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <strong>💡 Importante:</strong> Estas não são metodologias excludentes! Muitas organizações as usam em conjunto, cada uma contribuindo aspectos únicos da segurança no desenvolvimento.
+            </div>
+        </section>
+
+        <!-- SDL -->
+        <section id="sdl" class="content-section">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🛡️</span>
+                    SDL - Security Development Lifecycle
+                </div>
+                <div class="card-content">
+                    <p><strong>SDL</strong> é uma metodologia estruturada criada pela Microsoft que integra práticas de segurança em cada fase do desenvolvimento. É como um "checklist de segurança" que acompanha todo o projeto.</p>
+                    <br>
+                    <p><strong>Objetivo:</strong> Reduzir vulnerabilidades e riscos de segurança desde o design até a manutenção.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Fases do SDL</div>
+                <div class="phases-container">
+                    <div class="phase">
+                        <div class="phase-number">1</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Treinamento</div>
+                            <div class="phase-description">Equipe aprende sobre segurança de software</div>
+                            <div class="phase-activities">
+                                <div class="activity">Cursos sobre vulnerabilidades comuns</div>
+                                <div class="activity">Certificações de segurança</div>
+                                <div class="activity">Conscientização sobre OWASP Top 10</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">2</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Requisitos</div>
+                            <div class="phase-description">Definir requisitos de segurança desde o início</div>
+                            <div class="phase-activities">
+                                <div class="activity">Identificar dados sensíveis</div>
+                                <div class="activity">Definir padrões de segurança</div>
+                                <div class="activity">Documentar ameaças potenciais</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">3</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Design</div>
+                            <div class="phase-description">Incorporar segurança no design da solução</div>
+                            <div class="phase-activities">
+                                <div class="activity">Análise de ameaças (Threat Modeling)</div>
+                                <div class="activity">Design seguro da arquitetura</div>
+                                <div class="activity">Revisar componentes de segurança</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">4</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Implementação</div>
+                            <div class="phase-description">Codificar seguindo padrões de segurança</div>
+                            <div class="phase-activities">
+                                <div class="activity">Usar bibliotecas seguras aprovadas</div>
+                                <div class="activity">Code review com foco em segurança</div>
+                                <div class="activity">Static code analysis (análise estática)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">5</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Verificação</div>
+                            <div class="phase-description">Testar para encontrar vulnerabilidades</div>
+                            <div class="phase-activities">
+                                <div class="activity">Testes dinâmicos (Dynamic Testing)</div>
+                                <div class="activity">Testes de penetração</div>
+                                <div class="activity">Fuzzing e análise de segurança</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">6</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Lançamento</div>
+                            <div class="phase-description">Preparar para colocar em produção de forma segura</div>
+                            <div class="phase-activities">
+                                <div class="activity">Plano de resposta a incidentes</div>
+                                <div class="activity">Checklist de segurança final</div>
+                                <div class="activity">Comunicação sobre riscos residuais</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">7</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Suporte</div>
+                            <div class="phase-description">Manter segurança após o lançamento</div>
+                            <div class="phase-activities">
+                                <div class="activity">Monitorar vulnerabilidades</div>
+                                <div class="activity">Aplicar patches e atualizações</div>
+                                <div class="activity">Responder a novos riscos descobertos</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Características Principais</div>
+                <div class="card-content">
+                    <table class="feature-table">
+                        <tr>
+                            <th>Característica</th>
+                            <th>Descrição</th>
+                        </tr>
+                        <tr>
+                            <td>Estruturado</td>
+                            <td>Processo bem definido e documentado</td>
+                        </tr>
+                        <tr>
+                            <td>Abrangente</td>
+                            <td>Cobre todas as fases do SDLC</td>
+                        </tr>
+                        <tr>
+                            <td>Proativo</td>
+                            <td>Identifica riscos antes da codificação</td>
+                        </tr>
+                        <tr>
+                            <td>Metodologia</td>
+                            <td>Processo formal com papéis definidos</td>
+                        </tr>
+                        <tr>
+                            <td>Documentação</td>
+                            <td>Requer documentação detalhada</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Quando usar SDL:</strong> Projetos grandes, aplicações críticas (financeiras, médicas), empresas com foco em qualidade e conformidade regulatória.
+            </div>
+        </section>
+
+        <!-- SSDLC -->
+        <section id="ssdlc" class="content-section">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">⚙️</span>
+                    SSDLC - Secure Software Development Lifecycle
+                </div>
+                <div class="card-content">
+                    <p><strong>SSDLC</strong> é um termo genérico que descreve qualquer ciclo de vida de desenvolvimento que integra segurança. É mais uma <strong>abordagem conceitual</strong> do que uma metodologia específica como SDL.</p>
+                    <br>
+                    <p><strong>Objetivo:</strong> Incorporar segurança como parte integral do processo de desenvolvimento, independentemente de qual metodologia (Waterfall, Agile, etc.) seja utilizada.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Princípios Fundamentais do SSDLC</div>
+                <div class="phases-container">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-title">🎯 Segurança desde o Início</div>
+                                <div class="timeline-description">Segurança não é um "plus" adicionado no final, mas parte integral do planejamento inicial.</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-title">🔍 Análise de Riscos Contínua</div>
+                                <div class="timeline-description">Identificar e avaliar riscos em todas as fases, não apenas uma vez.</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-title">👥 Responsabilidade Compartilhada</div>
+                                <div class="timeline-description">Segurança é responsabilidade de todos: desenvolvedores, arquitetos, testadores, operações.</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-title">📚 Boas Práticas Estabelecidas</div>
+                                <div class="timeline-description">Usar padrões reconhecidos como OWASP, CWE, e guidelines da indústria.</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-title">✔️ Verificação e Validação</div>
+                                <div class="timeline-description">Testar regularmente para encontrar e corrigir vulnerabilidades.</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-content">
+                                <div class="timeline-title">📊 Métricas de Segurança</div>
+                                <div class="timeline-description">Medir e acompanhar a postura de segurança ao longo do tempo.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">SSDLC em Diferentes Metodologias</div>
+                <div class="card-content">
+                    <p>O SSDLC é flexível e pode ser adaptado a diferentes abordagens:</p>
+                </div>
+                <div class="phases-container">
+                    <div class="phase">
+                        <div class="phase-number">W</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Waterfall + SSDLC</div>
+                            <div class="phase-description">Fase formal de segurança em cada etapa sequencial</div>
+                            <div class="phase-activities">
+                                <div class="activity">Design review de segurança antes de implementação</div>
+                                <div class="activity">Testes de segurança em fase dedicada</div>
+                                <div class="activity">Documentação completa de riscos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">A</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Agile + SSDLC</div>
+                            <div class="phase-description">Segurança integrada em cada sprint</div>
+                            <div class="phase-activities">
+                                <div class="activity">Security stories em cada sprint</div>
+                                <div class="activity">Code review com foco em segurança</div>
+                                <div class="activity">Testes de segurança contínuos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">D</div>
+                        <div class="phase-content">
+                            <div class="phase-title">DevOps + SSDLC</div>
+                            <div class="phase-description">Segurança automatizada no pipeline</div>
+                            <div class="phase-activities">
+                                <div class="activity">Verificações de segurança automatizadas</div>
+                                <div class="activity">Testes de segurança contínuos</div>
+                                <div class="activity">Compliance checking automático</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Quando usar SSDLC:</strong> Como conceito guia em qualquer tipo de projeto, independente da metodologia. É um princípio, não uma implementação específica.
+            </div>
+        </section>
+
+        <!-- DEVSECOPS -->
+        <section id="devsecops" class="content-section">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">🚀</span>
+                    DevSecOps - Desenvolvimento Seguro com Operações
+                </div>
+                <div class="card-content">
+                    <p><strong>DevSecOps</strong> é a evolução do DevOps que coloca segurança como responsabilidade compartilhada de todos. Combina Development (desenvolvimento), Security (segurança) e Operations (operações).</p>
+                    <br>
+                    <p><strong>Objetivo:</strong> Automatizar verificações de segurança no pipeline CI/CD para detectar e corrigir problemas rapidamente, sem sacrificar a velocidade.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">O Pipeline DevSecOps</div>
+                <div class="phases-container">
+                    <div class="phase">
+                        <div class="phase-number">1</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Plan + Segurança</div>
+                            <div class="phase-description">Planejar com considerações de segurança</div>
+                            <div class="phase-activities">
+                                <div class="activity">Identificar requisitos de segurança</div>
+                                <div class="activity">Threat modeling rápido</div>
+                                <div class="activity">Compliance requirements</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">2</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Code + Segurança</div>
+                            <div class="phase-description">Código seguro desde a escrita</div>
+                            <div class="phase-activities">
+                                <div class="activity">Pre-commit hooks (verificações locais)</div>
+                                <div class="activity">IDE com plugins de segurança</div>
+                                <div class="activity">Pair programming com foco em segurança</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">3</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Build (Compilação) + Segurança</div>
+                            <div class="phase-description">Análise automática durante a build</div>
+                            <div class="phase-activities">
+                                <div class="activity">SAST (Static Application Security Testing)</div>
+                                <div class="activity">Verificação de dependências (SCA)</div>
+                                <div class="activity">Container scanning</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">4</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Test (Testes) + Segurança</div>
+                            <div class="phase-description">Testes de segurança automatizados</div>
+                            <div class="phase-activities">
+                                <div class="activity">DAST (Dynamic Application Security Testing)</div>
+                                <div class="activity">Testes de penetração automatizados</div>
+                                <div class="activity">Testes de conformidade</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">5</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Deploy + Segurança</div>
+                            <div class="phase-description">Deploy seguro e auditado</div>
+                            <div class="phase-activities">
+                                <div class="activity">Approval gates de segurança</div>
+                                <div class="activity">Infraestrutura como código segura</div>
+                                <div class="activity">Secrets management</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">6</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Operate + Segurança</div>
+                            <div class="phase-description">Monitoramento contínuo em produção</div>
+                            <div class="phase-activities">
+                                <div class="activity">SIEM (Security Information & Event Management)</div>
+                                <div class="activity">Detecção de anomalias</div>
+                                <div class="activity">Resposta rápida a incidentes</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Ferramentas DevSecOps Comuns</div>
+                <div class="card-content">
+                    <table class="feature-table">
+                        <tr>
+                            <th>Categoria</th>
+                            <th>Tipo</th>
+                            <th>Exemplos de Ferramentas</th>
+                        </tr>
+                        <tr>
+                            <td>SAST (Análise Estática)</td>
+                            <td>Encontra vulnerabilidades no código</td>
+                            <td>SonarQube, Checkmarx, Fortify</td>
+                        </tr>
+                        <tr>
+                            <td>DAST (Análise Dinâmica)</td>
+                            <td>Testa a aplicação em execução</td>
+                            <td>OWASP ZAP, Burp Suite, Acunetix</td>
+                        </tr>
+                        <tr>
+                            <td>SCA (Composição)</td>
+                            <td>Verifica dependências e bibliotecas</td>
+                            <td>Snyk, WhiteSource, Blackduck</td>
+                        </tr>
+                        <tr>
+                            <td>Container Scanning</td>
+                            <td>Analisa imagens Docker</td>
+                            <td>Trivy, Clair, Harbor</td>
+                        </tr>
+                        <tr>
+                            <td>IaC (Infraestrutura)</td>
+                            <td>Verifica configurações de infra</td>
+                            <td>Terraform Scan, CloudFormation Guard</td>
+                        </tr>
+                        <tr>
+                            <td>Secrets Management</td>
+                            <td>Gerencia credenciais seguramente</td>
+                            <td>HashiCorp Vault, AWS Secrets Manager</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Exemplo de Pipeline DevSecOps</div>
+                <div class="card-content">
+                    <pre style="background: rgba(15,23,42,0.8); padding: 1rem; border-radius: 8px; overflow-x: auto; color: var(--text-secondary); font-size: 0.85rem; line-height: 1.4;">
+Developer faz commit
+    ↓
+Pre-commit hooks (SAST local)
+    ↓
+Push para repositório
+    ↓
+CI/CD Pipeline inicia
+    ├─ Build: Compilação
+    ├─ SAST: Análise estática (SonarQube)
+    ├─ SCA: Verificação de dependências (Snyk)
+    ├─ Container: Scan de imagem Docker
+    ├─ DAST: Análise dinâmica (ZAP)
+    └─ Compliance: Checklist automático
+    ↓
+Tudo OK? → Deploy para staging
+    ↓
+Testes de integração com segurança
+    ↓
+Aprovação manual (se necessário)
+    ↓
+Deploy para produção
+    ↓
+Monitoramento contínuo (SIEM, alertas)
+                    </pre>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Quando usar DevSecOps:</strong> Equipes ágeis/DevOps, startups que precisam de velocidade com segurança, organizações com alto volume de releases.
+            </div>
+        </section>
+
+        <!-- COMPARAÇÃO -->
+        <section id="comparacao" class="content-section">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">📊</span>
+                    Comparação: SDL vs SSDLC vs DevSecOps
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Tabela Comparativa Completa</div>
+                <div class="card-content">
+                    <table class="feature-table">
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>SDL</th>
+                            <th>SSDLC</th>
+                            <th>DevSecOps</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo</strong></td>
+                            <td>Metodologia específica</td>
+                            <td>Conceito genérico</td>
+                            <td>Cultura + Prática</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Origem</strong></td>
+                            <td>Microsoft (2004)</td>
+                            <td>Conceito de indústria</td>
+                            <td>Evolução do DevOps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Abordagem</strong></td>
+                            <td>Estruturada e formal</td>
+                            <td>Principios adaptativos</td>
+                            <td>Automatizada e contínua</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fases Principais</strong></td>
+                            <td>7 fases bem definidas</td>
+                            <td>Integrado ao SDLC</td>
+                            <td>Pipeline CI/CD</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Velocidade</strong></td>
+                            <td>Mais lenta (formal)</td>
+                            <td>Variável</td>
+                            <td>Rápida (automatizada)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Automação</strong></td>
+                            <td>Parcial</td>
+                            <td>Variável</td>
+                            <td class="checkmark">Alta ✓</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Documentação</strong></td>
+                            <td class="checkmark">Extensa ✓</td>
+                            <td class="partial">Moderada ~</td>
+                            <td class="partial">Mínima ~</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Custo Inicial</strong></td>
+                            <td>Alto</td>
+                            <td>Médio</td>
+                            <td>Médio-Alto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curva de Aprendizado</strong></td>
+                            <td>Steep</td>
+                            <td>Média</td>
+                            <td>Média</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Melhor para...</strong></td>
+                            <td>Projetos críticos e formais</td>
+                            <td>Qualquer projeto</td>
+                            <td>Equipes ágeis e DevOps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Feedback</strong></td>
+                            <td>Periódico</td>
+                            <td>Contínuo</td>
+                            <td class="checkmark">Imediato ✓</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Responsabilidade</strong></td>
+                            <td>Centralizada</td>
+                            <td>Compartilhada</td>
+                            <td class="checkmark">Totalmente Distribuída ✓</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Quando Usar Cada Uma?</div>
+                <div class="phases-container">
+                    <div class="phase">
+                        <div class="phase-number">🛡️</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Use SDL quando:</div>
+                            <div class="phase-activities">
+                                <div class="activity">Desenvolvendo aplicações críticas (fintech, healthcare)</div>
+                                <div class="activity">Precisa de certificação ou conformidade rigorosa</div>
+                                <div class="activity">Equipe tem experiência com processos formais</div>
+                                <div class="activity">Tempo de desenvolvimento não é crítico</div>
+                                <div class="activity">Segurança é o máximo interesse</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">⚙️</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Use SSDLC quando:</div>
+                            <div class="phase-activities">
+                                <div class="activity">Quer um conceito guia, não uma receita rígida</div>
+                                <div class="activity">Combinando diferentes metodologias (Waterfall + Agile)</div>
+                                <div class="activity">Implementando segurança gradualmente</div>
+                                <div class="activity">Treinando equipes sobre boas práticas</div>
+                                <div class="activity">Precisa de flexibilidade na implementação</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="phase">
+                        <div class="phase-number">🚀</div>
+                        <div class="phase-content">
+                            <div class="phase-title">Use DevSecOps quando:</div>
+                            <div class="phase-activities">
+                                <div class="activity">Equipe já usa DevOps ou CI/CD</div>
+                                <div class="activity">Precisa de releases frequentes</div>
+                                <div class="activity">Quer automatizar verificações de segurança</div>
+                                <div class="activity">Busca feedback imediato sobre vulnerabilidades</div>
+                                <div class="activity">Cultura é ágil e iterativa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Combinando as Três Abordagens</div>
+                <div class="card-content">
+                    <div class="info-box">
+                        <strong>💡 O Melhor dos Três Mundos:</strong>
+                        <p style="margin-top: 0.75rem;">Muitas organizações modernas combinam os três:</p>
+                        <p style="margin-top: 0.5rem;">
+                            • Use <strong>SSDLC</strong> como princípio guia (conceitual)<br>
+                            • Implemente <strong>SDL practices</strong> nas fases críticas (design, verificação)<br>
+                            • Automatize com <strong>DevSecOps</strong> no pipeline CI/CD
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Exemplo Híbrido:</strong> Uma fintech pode usar SSDLC como framework, aplicar SDL rigorosamente nas fases críticas (design de autenticação, processamento de pagamentos), e usar DevSecOps para automatizar testes contínuos em seu pipeline de deploy.
+            </div>
+        </section>
+
+        <!-- QUIZ -->
+        <section id="quiz" class="content-section">
+            <div class="card">
+                <div class="card-title">
+                    <span class="card-icon">✅</span>
+                    Quiz Interativo - Teste seu Conhecimento!
+                </div>
+                <div class="card-content">
+                    <p>Responda as perguntas abaixo para verificar sua compreensão dos conceitos. Clique em cada resposta para ver se está correta!</p>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <!-- Questão 1 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">1. Qual é a origem do SDL?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            Microsoft criou o SDL em 2004 como metodologia formal de desenvolvimento seguro
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Google desenvolveu SDL como alternativa ao DevOps tradicional
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            SDL é um padrão ISO internacionalmente obrigatório
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Amazon criou SDL para seus serviços em nuvem
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">2. Quantas fases principais tem o SDL?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            3 fases (Design, Código, Deploy)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            7 fases (Treinamento, Requisitos, Design, Implementação, Verificação, Lançamento, Suporte)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            5 fases (Planejamento, Desenvolvimento, Testes, Implementação, Monitoramento)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Não tem um número fixo de fases
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">3. Qual a principal diferença entre SDL e SSDLC?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            SDL é uma metodologia específica estruturada, enquanto SSDLC é um conceito genérico adaptável
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            SSDLC é mais seguro que SDL e deve sempre ser preferido
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            SDL é apenas para Waterfall, SSDLC é apenas para Agile
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Não há diferença real entre SDL e SSDLC
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">4. Qual é o foco principal do DevSecOps?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Remover todas as operações do processo de desenvolvimento
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            Automatizar verificações de segurança no pipeline CI/CD para manter velocidade sem sacrificar segurança
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Criar um departamento de segurança separado
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Parar o desenvolvimento até que todas as vulnerabilidades sejam eliminadas
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">5. Qual técnica NÃO faz parte de um pipeline DevSecOps típico?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            SAST (Static Application Security Testing)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            DAST (Dynamic Application Security Testing)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            SCA (Software Composition Analysis)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            WSA (Wrist Security Analysis) - essa técnica não existe!
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">6. Qual seria o melhor cenário para usar SSDLC como conceito guia?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Apenas para pequenas startups
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            Quando quer um framework flexível que se adapte a diferentes metodologias (Waterfall + Agile)
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Quando precisa de máxima certeza de segurança
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Nunca deve ser usado como conceito guia
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">7. Em qual fase do SDL o Threat Modeling é realizado?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Treinamento
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Requisitos
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            Design
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Implementação
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="quiz-question">
+                    <div class="quiz-question-text">8. Qual conceito é central no DevSecOps?</div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Segurança é responsabilidade apenas do time de segurança
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true)">
+                            Segurança é responsabilidade compartilhada de todos e deve ser automatizada no pipeline
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Operações não devem ter responsabilidade de segurança
+                        </div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false)">
+                            Desenvolvimento e Segurança devem trabalhar separados
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn" onclick="calculateScore()">📊 Ver Resultado Final</button>
+                <button class="btn btn-secondary" onclick="resetQuiz()">🔄 Resetar Quiz</button>
+            </div>
+
+            <div id="score-section" style="display: none;">
+                <div class="score-display">
+                    <div class="score-number" id="score-number">0/8</div>
+                    <div class="score-label" id="score-label">Responda todas as questões!</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>🔒 Secure Programming and Coding — UniFECAF</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Professor: Fernando Leonid</p>
+        <p style="margin-top: 0.75rem; font-size: 0.85rem;">
+            Página com objetivo educacional · Conceitos baseados em: Microsoft SDL, OWASP e DevSecOps Best Practices
+        </p>
+    </footer>
+</body>
+</html>
