@@ -1,58 +1,64 @@
 # ==============================================================================
-# AVISO IMPORTANTE: ESTE CÓDIGO CONTÉM VULNERABILIDADES INTENCIONAIS
-# Destina-se exclusivamente para fins educacionais e de treinamento em segurança.
-# NÃO utilize este código em ambientes de produção.
+# VERSÃO CORRIGIDA: Todas as vulnerabilidades foram tratadas
+# Baseado no arquivo app_vulneravel_injection.py
 # ==============================================================================
 
 from flask import Flask, request, render_template_string
+from markupsafe import escape
 import sqlite3
 import os
+import hashlib
 
 app = Flask(__name__)
+
+def hash_password(password):
+    """Gera hash SHA-256 da senha (em produção, usar bcrypt ou argon2)."""
+    return hashlib.sha256(password.encode()).hexdigest()
 
 def init_db():
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, username TEXT, password TEXT)")
-    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (1, 'admin', 'senha_secreta_123')")
-    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (2, 'maria', 'maria@2024')")
-    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (3, 'joao', 'joao_pass!')")
-    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (4, 'professor', 'prof_root_99')")
+    # CORREÇÃO: Senhas armazenadas com hash em vez de texto plano
+    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (1, 'admin', ?)", (hash_password('senha_secreta_123'),))
+    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (2, 'maria', ?)", (hash_password('maria@2024'),))
+    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (3, 'joao', ?)", (hash_password('joao_pass!'),))
+    cursor.execute("INSERT OR IGNORE INTO users (id, username, password) VALUES (4, 'professor', ?)", (hash_password('prof_root_99'),))
     cursor.execute("CREATE TABLE IF NOT EXISTS products (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, preco TEXT)")
     conn.commit()
     conn.close()
 
 # ==============================================================================
-# VULNERABILIDADE 1: SQL Injection
+# CORREÇÃO 1: SQL Injection → Query Parametrizada
 # ==============================================================================
 @app.route('/sql', methods=['GET', 'POST'])
 def sql_injection():
     user_id = request.args.get('id', '1')
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    
-  
-    query = f"SELECT * FROM users WHERE id = {user_id}"  
-    
-    cursor.execute(query)
+
+    # CORREÇÃO: Usar placeholder (?) em vez de f-string na query
+    query = "SELECT * FROM users WHERE id = ?"
+    cursor.execute(query, (user_id,))
     result = cursor.fetchall()
     conn.close()
-    
-    return f"<h1>Resultado da Query</h1><p>{result}</p>"
+
+    # CORREÇÃO: Escapar a saída HTML para evitar XSS refletido
+    return f"<h1>Resultado da Query</h1><p>{escape(str(result))}</p>"
 
 # ==============================================================================
-# VULNERABILIDADE 2: Cross-Site Scripting (XSS)
+# CORREÇÃO 2: SSTI/XSS → Variável passada como contexto do template
 # ==============================================================================
 @app.route('/xss', methods=['GET', 'POST'])
 def xss_injection():
     name = request.args.get('name', 'Visitante')
-    
-    template = f"<h1>Olá, {name}</h1>"
-    
-    return render_template_string(template)
+
+    # CORREÇÃO: Passar variável como parâmetro do template (auto-escape do Jinja2)
+    template = "<h1>Olá, {{ name }}</h1>"
+    return render_template_string(template, name=name)
 
 # ==============================================================================
-# VULNERABILIDADE 3: Stored XSS (XSS Persistente)
+# CORREÇÃO 3: Stored XSS → Dados escapados na saída via template Jinja2
 # ==============================================================================
 @app.route('/xss-stored', methods=['GET', 'POST'])
 def xss_stored():
@@ -69,16 +75,14 @@ def xss_stored():
     produtos = cursor.fetchall()
     conn.close()
 
-    linhas = ""
-    for p in produtos:
-        linhas += f"<tr><td>{p[0]}</td><td>{p[1]}</td></tr>"
-
+    # CORREÇÃO: Passar os dados como variável do template Jinja2
+    # O Jinja2 faz auto-escape de variáveis {{ }}, prevenindo XSS
     template = '''
     <html><head><style>
     body, form{font-family:Arial;display:flex;flex-direction:column;align-items:center;padding:20px}
-    input{width:100%%;padding:8px;box-sizing:border-box;margin-bottom:10px}
+    input{width:100%;padding:8px;box-sizing:border-box;margin-bottom:10px}
     button{padding:10px 20px;background:#007bff;color:#fff;border:none;cursor:pointer}
-    table{width:100%%;border-collapse:collapse;margin-top:20px}
+    table{width:100%;border-collapse:collapse;margin-top:20px}
     th,td{border:1px solid #ddd;padding:10px;text-align:left}
     th{background:#f4f4f4}
     </style></head>
@@ -93,12 +97,16 @@ def xss_stored():
         </form>
         <table>
             <thead><tr><th>Produto</th><th>Preco</th></tr></thead>
-            <tbody>''' + linhas + '''</tbody>
+            <tbody>
+                {% for produto in produtos %}
+                <tr><td>{{ produto[0] }}</td><td>{{ produto[1] }}</td></tr>
+                {% endfor %}
+            </tbody>
         </table>
     </body>
     </html>
     '''
-    return render_template_string(template)
+    return render_template_string(template, produtos=produtos)
 
 
 if __name__ == '__main__':
